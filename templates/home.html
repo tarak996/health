@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+</head>
+
+<body>
+<style>
+    .con{
+        margin-right:50%;
+        padding:7px;
+        color:black;
+        font-size:15px;
+        font-weight: 700;
+        background-color:LightSteelBlue;
+    }
+
+    .all{
+        margin-left:30%;
+        padding:2px;
+     }
+
+</style>
+<form method="post">
+    <div class="all">
+    {% csrf_token %}
+    {{form.as_p}}
+    <input  class="btn btn-primary btn-md" type="submit" value="Create">
+    </div>
+</form>
+
+
+{% for item in model %}
+<div class="all">
+<div class="con">
+        {{item.date}}<br>
+</div>
+{% for total in date_list %}
+{% for k,v in total.items %}
+{% if v == item.id %}
+
+{% for k,v in total.items %}
+{% if k != 'date' %}
+
+    <b style="font-size:20px;">{{k}} <span class="badge">{{v}}</span></b>
+
+
+
+{% endif %}
+{% endfor %}
+
+{% endif %}
+{% endfor %}
+{% endfor %}<br><br>
+
+<a href = "/details/{{item.id}}"><button type="button"  class="btn btn-success" style="font-size:10px">View Details</button></a>
+<a href="/delete/"><button type="button" class="btn btn-danger" style="font-size:10px">Delete</button></a><br><br><br>
+    </div>
+{% endfor %}
+
+</body>
+
+</html>
+{% endblock %}

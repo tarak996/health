@@ -1,0 +1,86 @@
+<html lang="en">
+<head>
+  <title>food tracker</title>
+  <meta charset="utf-8">
+  {% load static %}
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <link href="{% static 'images/2.jpeg' as b %}" rel="stylesheet">
+  <link href="{% static 'images/1.jpeg' as a %}" rel="stylesheet">
+  <link href="{% static 'images/3.jpeg' as c %}" rel="stylesheet">
+</head>
+<body>
+
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="">FOOD TRACK</a>
+    </div>
+
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="/home">Home</a></li>
+
+      <li class="active"><a href="/additem">Additems</a></li>
+
+    </ul>
+
+    <ul class="nav navbar-nav navbar-right">
+      <li><a href="/sign"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+
+      <li>
+         {% if user.is_authenticated %}
+         <a class="nav-link" href="{% url 'logout' %}">Logout </a>
+      {% else %}
+      <a class="nav-link" href="{% url 'login' %}">Login</a>
+      {% endif %}
+</li>
+    </ul>
+  </div>
+</nav>
+
+<div class="container">
+
+</div>
+  <img src="https://healthifyme.imgix.net/static/images/home_website/landing/assets/Logo.png?auto=format" height="50"><hr>
+<div class="container">
+
+  <div id="myCarousel" class="carousel slide" data-ride="carousel">
+    <!-- Indicators -->
+    <ol class="carousel-indicators">
+      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+      <li data-target="#myCarousel" data-slide-to="1"></li>
+      <li data-target="#myCarousel" data-slide-to="2"></li>
+    </ol>
+
+    <!-- Wrapper for slides -->
+    <div class="carousel-inner">
+      <div class="item active">
+        <img src="{{b}}" alt="Los Angeles" style="width:100%;">
+      </div>
+
+      <div class="item">
+        <img src="{{a}}" alt="Chicago" style="width:100%;">
+      </div>
+
+      <div class="item">
+        <img src="{{c}}" alt="New york" style="width:100%;">
+      </div>
+    </div>
+
+    <!-- Left and right controls -->
+    <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+      <span class="glyphicon glyphicon-chevron-left"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="right carousel-control" href="#myCarousel" data-slide="next">
+      <span class="glyphicon glyphicon-chevron-right"></span>
+      <span class="sr-only">Next</span>
+    </a>
+  </div>
+</div>
+</body>
+</html>
+{% block content %}
+{% endblock %}
