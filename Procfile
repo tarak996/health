@@ -1,1 +1,1 @@
-web: gunicorn add_to_cart.wsgi
+web: gunicorn health.wsgi
